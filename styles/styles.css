@@ -169,6 +169,10 @@ main .section {
   padding: 64px 16px;
 }
 
+main .section:nth-of-type(2n) {
+  background-color: #F4F3EE;
+}
+
 main pre {
   background-color: var(--overlay-background-color);
   padding: 1em;
