@@ -12,13 +12,16 @@
 
  :root {
   /* colors */
-  --link-color: #035fe6;
-  --link-hover-color: #136ff6;
+  --link-color: #21a0d2;
+  --link-hover-color: #24beed;
   --background-color: #fff;
+  --button-color: #fff;
+  --button-background-color: var(--link-color);
   --footer-color: #9e9e9e;
   --footer-background-color: #434344;
-  --overlay-background-color: #eee;
+  --heading-color: #434344;
   --highlight-background-color: #ccc;
+  --overlay-background-color: #eee;
   --text-color: #000;
 
   /* fonts */
@@ -65,20 +68,16 @@ header {
 
 h1, h2, h3,
 h4, h5, h6 {
+  color: var(--heading-color);
   font-family: var(--heading-font-family);
   font-weight: 600;
   line-height: 1.25;
-  margin-top: 1em;
+  margin-top: -3px;
   margin-bottom: .5em;
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
-h1 { font-size: var(--heading-font-size-xxl) }
-h2 { font-size: var(--heading-font-size-xl) }
-h3 { font-size: var(--heading-font-size-l) }
-h4 { font-size: var(--heading-font-size-m) }
-h5 { font-size: var(--heading-font-size-s) }
-h6 { font-size: var(--heading-font-size-xs) }
+h1 { font-size: var(--heading-font-size-xl) }
 
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
@@ -91,7 +90,6 @@ a:any-link {
 }
 
 a:hover {
-  text-decoration: underline;
   color: var(--link-hover-color);
 }
 
@@ -115,23 +113,25 @@ a.button:any-link, button {
   display: inline-block;
   box-sizing: border-box;
   text-decoration: none;
-  border: 2px solid transparent;
-  padding: 5px 30px;
+  border: none;
+  padding: 12px 16px;
   text-align: center;
-  font-style: normal; 
-  font-weight: 600;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
   cursor: pointer;
-  color: var(--background-color);
-  background-color: var(--link-color);
+  color: var(--button-color);
+  background-color: var(--button-background-color);
+  border-radius: 3px;
   margin: 16px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-radius: 30px;
+  line-height: 1.2em;
 }
 
 a.button:hover, a.button:focus, button:hover, button:focus  {
-  background-color: var(--link-hover-color);
+  opacity: .9;
   cursor: pointer;
 }
 
@@ -166,7 +166,7 @@ main input:hover {
 }
 
 main .section {
-  padding: 64px 16px;
+  padding: 50px;
 }
 
 main .section:nth-of-type(2n) {
@@ -213,23 +213,17 @@ main img {
 
 @media (min-width: 600px) {
   main .section {
-    padding: 64px 32px;
+    padding: 50px 32px;
   }  
 }
 
-@media (min-width: 900px) {
-  :root {
-    --heading-font-size-xxl: 60px;
-    --heading-font-size-xl: 48px;
-    --heading-font-size-l: 36px;
-    --heading-font-size-m: 30px;
-    --heading-font-size-s: 24px;
-    --heading-font-size-xs: 22px;  
-  }
+@media (min-width: 1024px) {
   
   .section > div {
     max-width: 1200px;
     margin: auto;
+    padding-left: 112px;
+    padding-right: 112px;
   }
 }
 
