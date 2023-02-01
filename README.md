@@ -1,9 +1,9 @@
-# Your Project's Title...
-Your project's description...
+# BASF - Retail First
+Adobe Franklin impl of https://basfretailfirst.com
 
 ## Environments
-- Preview: https://main--{repo}--{owner}.hlx.page/
-- Live: https://main--{repo}--{owner}.hlx.live/
+- Preview: https://main--basf-retailfirst--hlxsites.hlx.page/
+- Live: https://main--basf-retailfirst--hlxsites.hlx.live/
 
 ## Installation
 
