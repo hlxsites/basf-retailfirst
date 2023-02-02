@@ -73,7 +73,7 @@ h4, h5, h6 {
   font-weight: 600;
   line-height: 1.25;
   margin-top: -3px;
-  margin-bottom: .5em;
+  margin-bottom: 14px;
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
@@ -218,12 +218,12 @@ main img {
 }
 
 @media (min-width: 1024px) {
-  
   .section > div {
-    max-width: 1200px;
+    max-width: 1379px;
     margin: auto;
     padding-left: 112px;
     padding-right: 112px;
+    box-sizing: border-box;
   }
 }
 
