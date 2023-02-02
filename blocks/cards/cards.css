@@ -14,10 +14,7 @@
 .cards > ul > li {
     display: flex;
     flex-direction: column;
-}
-
-.cards > ul > li:hover::before {
-    content: '';
+    cursor: pointer;
 }
 
 .cards > ul > li p {
@@ -31,11 +28,44 @@
 }
 
 .cards > ul > li picture {
+    position: relative;
     order: 0;
+    margin-bottom: 10px;
+}
+
+.cards .has-overlay:hover picture::before,
+.cards .has-overlay:hover picture::after {
+    position: absolute;
+    content: '';
+    opacity: .7;
+}
+
+.cards .has-overlay:hover picture::before {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.cards .has-overlay:hover picture::after {
+    left: 50%;
+    top: 50%;
+    width: 80px;
+    height: 80px;
+    margin: -40px 0 0 -40px;
+    border-radius: 50px;
+    content: '\21F2';
+    font-size: 24px;
+    background-color: #21a0d2;
+    color: white;
+    line-height: 80px;
+    text-align: center;
+    transform: rotate(-90deg);
+    animation: show-indicator 0.5s 1 cubic-bezier(0.175,0.885,0.320,1.275);
 }
 
 .cards > ul > li img {
     aspect-ratio: 5 / 3;
+    vertical-align: bottom;
 }
 
 .cards > ul > li .button-container {
@@ -103,4 +133,9 @@
 
 @media screen and (min-width: 1024px) {
     
+}
+
+@keyframes show-indicator {
+    0% { transform: rotate(-265deg) scale(0.2); }
+    100% { transform: rotate(-90deg) scale(1); }
 }
