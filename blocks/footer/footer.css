@@ -47,6 +47,7 @@ footer .footer strong a:hover {
 }
 
 footer .footer > div > div {
+  position: relative;
   display: block;
   padding: 68px 15px;
   max-width: 1379px;
@@ -80,6 +81,48 @@ footer .footer > div > div:first-of-type a:hover {
   color: #24beed;
 }
 
+footer .button-container {
+  position: fixed;
+  display: none;
+  right: 50px;
+  bottom: 50px;
+  animation: pop-in 0.3s 1 cubic-bezier(0.175,0.885,0.320,1.275);
+}
+
+footer .button:any-link {
+  position: relative;
+  height: 50px;
+  width: 50px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ebebeb;
+  border-radius: 2px;;
+  background-color: #434344;
+  color: transparent;
+  font-size: 1px;
+  line-height: 50px;
+  text-align: center;
+  transition: all 0.3s ease-out;
+}
+
+footer .button::before {
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  content: '\2227';
+  color: #9e9e9e;
+  font-size: 18px;
+  line-height: 50px;
+  height: 50px;
+  width: 50px;
+}
+
+footer .button:any-link:hover {
+  background-color: #f8f8f8;
+  color: #21a0d2;
+  border-color: #ebebeb;
+}
+
 @media screen and (min-width: 768px) {
   footer .footer > div > div {
     display: flex;
@@ -88,6 +131,10 @@ footer .footer > div > div:first-of-type a:hover {
 
   footer .footer li:first-child {
     padding-left: 6px;
+  }
+
+  footer .button-container {
+    display: block;
   }
 }
 
@@ -98,5 +145,16 @@ footer .footer > div > div:first-of-type a:hover {
 
   footer .footer > div > div {
     padding: 68px 50px;
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }

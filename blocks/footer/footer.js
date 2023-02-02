@@ -1,4 +1,4 @@
-import { readBlockConfig, decorateIcons } from '../../scripts/lib-franklin.js';
+import { readBlockConfig, decorateIcons, decorateButtons } from '../../scripts/lib-franklin.js';
 
 /**
  * loads and decorates the footer
@@ -15,5 +15,20 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   footer.innerHTML = html;
   await decorateIcons(footer);
+  await decorateButtons(footer);
   block.append(footer);
+
+  block.querySelector('a[href="bookmark://top"]').addEventListener('click', (ev) => {
+    ev.preventDefault();
+    document.body.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.addEventListener('scroll', () => {
+    const goToTop = block.querySelector('.button-container');
+    if (window.scrollY > 510) {
+      goToTop.style.display = 'block';
+    } else if (window.scrollY < 460) {
+      goToTop.style.display = 'none';
+    }
+  }, { passive: true });
 }
