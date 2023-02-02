@@ -16,6 +16,10 @@
     flex-direction: column;
 }
 
+.cards > ul > li:hover::before {
+    content: '';
+}
+
 .cards > ul > li p {
     font-size: 20px;
     letter-spacing: 0.3px;
@@ -31,7 +35,7 @@
 }
 
 .cards > ul > li img {
-    aspect-ratio: auto 500 / 300;
+    aspect-ratio: 5 / 3;
 }
 
 .cards > ul > li .button-container {
@@ -50,11 +54,51 @@
     font-weight: 700;
 }
 
+.cards > ul ul {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4%;
+    margin: 0;
+    padding: 15px;
+    background: #004a96;
+    list-style: none;
+    aspect-ratio: 5 / 3;
+}
+
+.cards > ul ul li {
+    padding: 7px 0;
+    border-bottom: 1px solid white;
+}
+
+.cards > ul ul a {
+    display: block;
+    color: white;
+    font-size: 14px;
+    line-height: 1.65rem;
+}
+
+.cards > ul ul strong {
+    display: block;
+    font-size: 17px;
+}
+
 @media screen and (min-width: 768px) {
     .cards > ul {
         grid-template-columns: 1fr 1fr 1fr;
     }
-    
+
+    .cards > ul ul {
+        gap: 0;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cards > ul ul {
+        gap: 4%;
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media screen and (min-width: 1024px) {
