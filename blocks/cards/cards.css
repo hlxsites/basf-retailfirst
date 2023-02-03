@@ -27,7 +27,8 @@
     line-height: 26px;
 }
 
-.cards > ul > li picture {
+.cards > ul > li picture,
+.cards > ul > li video {
     position: relative;
     order: 0;
     margin-bottom: 10px;

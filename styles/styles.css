@@ -211,6 +211,33 @@ main img {
   height: auto;
 }
 
+.home .columns video,
+.home .columns img {
+    width: 412px;
+    aspect-ratio: 5 / 3;
+    object-fit: cover;
+}
+
+.home .columns  p {
+    margin: 0;
+}
+
+.home .columns > div {
+    font-size: 16px;
+}
+
+.home .columns > div > div {
+    flex: none;
+}
+
+.home .columns > div > div:first-child {
+    width: 36.6%;
+}
+
+.home .columns > div > div:nth-child(2) {
+    width: 47%;
+}
+
 @media (min-width: 600px) {
   main .section {
     padding: 50px 32px;

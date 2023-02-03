@@ -38,6 +38,29 @@ function buildAutoBlocks(main) {
   }
 }
 
+function decorateVideos(el) {
+  el.querySelectorAll('picture + a[href*=".mp4"]').forEach((a) => {
+    const video = document.createElement('video');
+    video.src = a.href;
+    video.autoplay = true;
+    video.muted = true;
+    video.loop = true;
+    a.previousElementSibling.remove();
+    a.replaceWith(video);
+  });
+}
+
+function autoplayVideos(el) {
+  el.querySelectorAll('video[autoplay]').forEach((v) => {
+    const video = document.createElement('video');
+    video.addEventListener('loadedmetadata', (ev) => {
+      console.log(ev.target.src);
+      ev.target.play();
+    }, { once: true });
+    v.load();
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -47,6 +70,7 @@ export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
   decorateIcons(main);
+  decorateVideos(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
@@ -88,6 +112,7 @@ export function addFavIcon(href) {
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadBlocks(main);
+  autoplayVideos(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;

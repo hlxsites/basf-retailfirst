@@ -23,25 +23,3 @@
         margin-left: unset;
     }
 }
-
-.home .columns img {
-    width: auto;
-    height: 258px;
-}
-.home .columns > div > div {
-    flex: none;
-}
-
-.home .columns > div {
-    font-size: 16px;
-}
-
-.home .columns  p {
-    margin: 0;
-}
-.home .columns > div > div:first-child {
-    width: 36.6%;
-}
-.home .columns > div > div:nth-child(2) {
-    width: 47%;
-}
