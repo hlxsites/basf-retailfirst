@@ -53,8 +53,10 @@ function buildArticle(main) {
   divContainer.append(rightColumn);
 
   const mainContent = main.querySelector('body.article div.section > div.default-content-wrapper');
-  mainContent.classList.add('article-body');
-  rightColumn.append(mainContent);
+  if (mainContent) {
+    mainContent.classList.add('article-body');
+    rightColumn.append(mainContent);
+  }
   main.insertBefore(columnContainer, main.firstChild);
 }
 
