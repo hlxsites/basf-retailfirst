@@ -1,4 +1,4 @@
-header, header nav {
+header nav {
   position: relative;
   border-bottom: solid 15px;
   max-width: 1279px;
@@ -9,10 +9,12 @@ header, header nav {
   line-height: 25px;
   margin: 0 auto;
 }
+
 header nav div  {
   max-width: 1379px;
   margin: auto;
 }
+
 header nav div ul {
   list-style: none;
   height: 30px;

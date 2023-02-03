@@ -132,10 +132,6 @@ footer .button:any-link:hover {
   footer .footer li:first-child {
     padding-left: 6px;
   }
-
-  footer .button-container {
-    display: block;
-  }
 }
 
 @media screen and (min-width: 1024px) {
