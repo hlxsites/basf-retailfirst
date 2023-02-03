@@ -230,12 +230,69 @@ main img {
     flex: none;
 }
 
+body.article .columns > div {
+    background-color: var(--background-color);
+}
+
 .home .columns > div > div:first-child {
     width: 36.6%;
 }
 
 .home .columns > div > div:nth-child(2) {
     width: 47%;
+}
+
+body.article div.section {
+    background-color: var(--background-color);
+}
+
+body.article div.article-hero p {
+    margin: 0.85em 0;
+    color: var(--link-color);
+    font-size: var(--body-font-size-xs);
+    font-weight: bold;
+}
+
+body.article .columns > div > div:first-of-type > p {
+    font-size: var(--body-font-size-xs);
+    margin: 0.85em 0;
+    font-weight: bold;
+}
+
+body.article div.article-hero h1 {
+    font-size: 60px;
+}
+
+body.article div.article-body {
+    font-size: var(--body-font-size-xs);
+}
+
+body.article div.article-body li strong {
+    color: var(--link-color);
+}
+
+@media (min-width: 900px) {
+    body.article .columns > div {
+        display: flex;
+        align-items: center;
+        flex-direction: unset;
+    }
+
+    body.article.columns > div > div {
+        flex: 1;
+        margin-left: 32px;
+    }
+
+    body.article .columns > div > div:first-of-type {
+        margin-left: unset;
+        align-self: stretch;
+        padding-right: 180px;
+        width: 100%;
+    }
+
+    body.article .columns > div > div:last-of-type {
+        padding-right: 140px;
+    }
 }
 
 @media (min-width: 600px) {
