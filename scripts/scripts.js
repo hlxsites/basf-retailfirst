@@ -40,12 +40,14 @@ function buildAutoBlocks(main) {
 
 function decorateVideos(el) {
   el.querySelectorAll('picture + a[href*=".mp4"]').forEach((a) => {
+    const div = document.createElement('div');
     const video = document.createElement('video');
     video.src = a.href;
     video.autoplay = true;
     video.loop = true;
+    div.append(video);
     a.previousElementSibling.remove();
-    a.replaceWith(video);
+    a.replaceWith(div);
   });
 }
 

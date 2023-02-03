@@ -31,25 +31,32 @@
 .cards > ul > li video {
     position: relative;
     order: 0;
-    margin-bottom: 10px;
     width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+}
+
+.cards .has-overlay > *:first-child {
+    position: relative;
+    margin-bottom: 10px;
     aspect-ratio: 5 / 3;
 }
 
-.cards .has-overlay:hover picture::before,
-.cards .has-overlay:hover picture::after {
+.cards .has-overlay:hover > *:first-child::before,
+.cards .has-overlay:hover > *:first-child::after {
     position: absolute;
     content: '';
     opacity: .7;
+    z-index: 1;
 }
 
-.cards .has-overlay:hover picture::before {
+.cards .has-overlay:hover > *:first-child::before {
     width: 100%;
     height: 100%;
     background-color: white;
 }
 
-.cards .has-overlay:hover picture::after {
+.cards .has-overlay:hover > *:first-child::after {
     left: 50%;
     top: 50%;
     width: 80px;
