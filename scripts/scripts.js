@@ -39,31 +39,31 @@ function buildAutoBlocks(main) {
 }
 
 function decorateVideos(el) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e) => {
-      console.log(e.target);
-      if (!e.isIntersecting) {
-        e.target.pause();
-        return;
-      }
-      e.target.play();
-    });
-  });
   el.querySelectorAll('picture + a[href*=".mp4"]').forEach((a) => {
     const video = document.createElement('video');
     video.src = a.href;
     video.autoplay = true;
-    video.muted = true;
     video.loop = true;
     a.previousElementSibling.remove();
     a.replaceWith(video);
-    observer.observe(video);
   });
 }
 
-function preloadVideos(el) {
+function autoplayVideos(el) {
+  document.body.click();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) {
+        e.target.pause();
+        return;
+      }
+      e.target.muted = true;
+      e.target.play();
+    });
+  });
   el.querySelectorAll('video[autoplay]').forEach((v) => {
     v.load();
+    observer.observe(v);
   });
 }
 
@@ -118,7 +118,7 @@ export function addFavIcon(href) {
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadBlocks(main);
-  preloadVideos(main);
+  autoplayVideos(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
