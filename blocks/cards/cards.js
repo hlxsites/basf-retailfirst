@@ -24,7 +24,13 @@ export default function decorate(block) {
     });
     ul.append(li);
   });
-  ul.querySelectorAll('img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
+  ul.querySelectorAll('img').forEach((img) => {
+    const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+    const optimizedImg = optimized.querySelector('img');
+    optimizedImg.setAttribute('width', 380);
+    optimizedImg.setAttribute('height', 228); // 3:5 aspect ratio
+    img.closest('picture').replaceWith(optimized);
+  });
   block.textContent = '';
   block.append(ul);
 }
