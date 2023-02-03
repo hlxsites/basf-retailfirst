@@ -1,5 +1,5 @@
 const createMetadataBlock = (main, document) => {
-    const meta = {};
+  const meta = {};
 
     // find the <title> element
     const title = document.querySelector('title');
