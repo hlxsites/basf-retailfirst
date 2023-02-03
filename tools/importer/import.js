@@ -1,4 +1,3 @@
-
 const createMetadataBlock = (main, document) => {
     const meta = {};
 
