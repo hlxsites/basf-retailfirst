@@ -39,6 +39,16 @@ function buildAutoBlocks(main) {
 }
 
 function decorateVideos(el) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      console.log(e.target);
+      if (!e.isIntersecting) {
+        e.target.pause();
+        return;
+      }
+      e.target.play();
+    });
+  });
   el.querySelectorAll('picture + a[href*=".mp4"]').forEach((a) => {
     const video = document.createElement('video');
     video.src = a.href;
@@ -47,16 +57,12 @@ function decorateVideos(el) {
     video.loop = true;
     a.previousElementSibling.remove();
     a.replaceWith(video);
+    observer.observe(video);
   });
 }
 
-function autoplayVideos(el) {
+function preloadVideos(el) {
   el.querySelectorAll('video[autoplay]').forEach((v) => {
-    const video = document.createElement('video');
-    video.addEventListener('loadedmetadata', (ev) => {
-      console.log(ev.target.src);
-      ev.target.play();
-    }, { once: true });
     v.load();
   });
 }
@@ -112,7 +118,7 @@ export function addFavIcon(href) {
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadBlocks(main);
-  autoplayVideos(main);
+  preloadVideos(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
