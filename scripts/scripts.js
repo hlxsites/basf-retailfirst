@@ -48,6 +48,7 @@ function decorateVideos(el) {
     div.append(video);
     a.previousElementSibling.remove();
     a.replaceWith(div);
+    video.load();
   });
 }
 
@@ -64,7 +65,6 @@ function autoplayVideos(el) {
     });
   });
   el.querySelectorAll('video[autoplay]').forEach((v) => {
-    v.load();
     observer.observe(v);
   });
 }
