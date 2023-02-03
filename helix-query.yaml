@@ -1,0 +1,14 @@
+version: 1
+auto-generated: true
+indices:
+  default:
+    include:
+      - /**
+    target: /query-index.json
+    properties:
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+      template:
+        select: head > meta[name="template"]
+        value: attribute(el, "content")
