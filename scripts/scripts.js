@@ -1,6 +1,5 @@
 import {
   sampleRUM,
-  buildBlock,
   loadHeader,
   loadFooter,
   decorateButtons,
@@ -14,16 +13,7 @@ import {
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = ['columns']; // add your LCP blocks to the list
-window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
-
-function buildHeroBlock(main) {
-  const section = main.querySelector('div');
-  const picture = section.querySelector('picture');
-  const elements = [...section.children];
-  if (section && picture) {
-    section.append(buildBlock('hero', { elems: elements }));
-  }
-}
+window.hlx.RUM_GENERATION = 'basf-retailfirst'; // add your RUM generation information here
 
 function buildArticle(main) {
   const columnContainer = document.createElement('div');
@@ -64,6 +54,7 @@ function buildArticle(main) {
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
+// eslint-disable-next-line no-unused-vars
 function buildAutoBlocks(main) {
   try {
     // buildHeroBlock(main);
