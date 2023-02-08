@@ -60,9 +60,11 @@ header nav > div:nth-child(2) h1 a {
   width: 200px;
   display: block;
   font-weight: 700 !important;
-  font-size: 63px;
+  font-size: 73px;
   text-decoration: none;
   color: #21a0d2;
+  line-height: 75.05px;
+  font-family: var(--home-header-family);
 }
 
 header nav picture {

@@ -25,7 +25,8 @@
   --text-color: #000;
 
   /* fonts */
-  --body-font-family: 'helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
+  --body-font-family: 'HelveticaNeueLTPro-Lt','helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
+  --home-header-family: 'HelveticaNeueLTStd-Blk';
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
@@ -144,7 +145,7 @@ a.button.secondary, button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color)
-} 
+}
 
 
 main input {
@@ -153,7 +154,7 @@ main input {
   max-width: 50rem;
   display: block;
   margin-bottom: 1rem;
-  padding: 0.75rem 0.6rem;    
+  padding: 0.75rem 0.6rem;
   border-radius: 0.25rem;
   box-sizing: border-box;
   border: 1px solid var(--text-color);
@@ -298,7 +299,7 @@ body.article div.article-body li strong {
 @media (min-width: 600px) {
   main .section {
     padding: 50px 32px;
-  }  
+  }
 }
 
 @media (min-width: 1024px) {
