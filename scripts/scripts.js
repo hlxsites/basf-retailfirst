@@ -71,14 +71,13 @@ async function buildRecentArticlesBlock(main) {
   const ARTICLE_COUNT = 3;
   const template = getMetadata('template');
   if (template === 'article') {
-    console.log('yes article');
     const indexURL = '/query-index.json';
     const index = await fetchIndex(indexURL);
     const shortIndex = index.filter((e) => (e.template === 'article' && e.lastModified && e.image && e.title));
-    shortIndex.sort((e1, e2) => e1.lastModified -  e2.lastModified);
-    let articles = [];
+    shortIndex.sort((e1, e2) => e1.lastModified - e2.lastModified);
+    const articles = [];
     const count = Math.min(ARTICLE_COUNT, shortIndex.length);
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < count; i += 1) {
       articles.push(`<article>
         <a href=${shortIndex[i].path}>
           <img src='${shortIndex[i].image}'/>
@@ -91,7 +90,6 @@ async function buildRecentArticlesBlock(main) {
     block.setAttribute('data-block-name', 'recent-articles');
     main.append(block);
     loadBlock(block);
-    console.log(shortIndex);
   }
 }
 

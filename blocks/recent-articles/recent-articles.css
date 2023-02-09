@@ -1,31 +1,37 @@
 .recent-articles {
     background-color: #f4f3ee;
-    padding: 60px 0 102px 0;
+    padding: 60px 0 102px;
 }
+
 .recent-articles h1 {
     font-size: 24px;
     letter-spacing: 1px;
     color: #434344;
 }
+
 .recent-articles > div > div {
     margin-left: 7px;
     overflow: hidden;
     flex: 1 1 260px;
 }
+
 .recent-articles article {
     margin-left: 1%;
 }
+
 .recent-articles article a {
     text-decoration: none;
     font-size: 16px;
     color: inherit;
     display: block;
 }
+
 .recent-articles article p {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 .recent-articles article img {
     max-width: 600px;
     width: 100%;
@@ -38,6 +44,7 @@
         width: 50%;
         margin: 0 auto;
     }
+
     .recent-articles > div:nth-child(2) {
        margin-top: 30px;
     }
