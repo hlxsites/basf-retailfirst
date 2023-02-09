@@ -60,7 +60,7 @@ async function buildRecentArticlesBlock(main) {
         </a>
       </article>`);
     }
-    const block = buildBlock('recent-articles', [articles]);
+    const block = buildBlock('recent-articles', [['<h1>Other features this month</h1>'], articles]);
     block.classList.add('block');
     block.setAttribute('data-block-name', 'recent-articles');
     main.append(block);
