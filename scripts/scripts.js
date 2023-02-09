@@ -1,6 +1,5 @@
 import {
   sampleRUM,
-  buildBlock,
   loadHeader,
   loadFooter,
   decorateButtons,
@@ -16,15 +15,41 @@ import {
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = ['columns']; // add your LCP blocks to the list
-window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
+window.hlx.RUM_GENERATION = 'basf-retailfirst'; // add your RUM generation information here
 
-function buildHeroBlock(main) {
-  const section = main.querySelector('div');
-  const picture = section.querySelector('picture');
-  const elements = [...section.children];
-  if (section && picture) {
-    section.append(buildBlock('hero', { elems: elements }));
+function buildArticle(main) {
+  const columnContainer = document.createElement('div');
+  const columnsWrapper = document.createElement('div');
+  const colSection = document.createElement('div');
+  const divContainer = document.createElement('div');
+
+  colSection.append(divContainer);
+  columnsWrapper.append(colSection);
+  columnContainer.append(columnsWrapper);
+  columnContainer.classList.add(['section'], ['columns-container']);
+  columnsWrapper.classList.add('columns-wrapper');
+  colSection.classList.add(['columns'], ['columns-2-cols']);
+
+  const leftColumn = document.createElement('div');
+  const rightColumn = document.createElement('div');
+
+  const articleDate = main.querySelector('body.article div.default-content-wrapper > p:first-of-type');
+
+  const hero = main.querySelector('div');
+  hero.classList.remove('section');
+  hero.classList.add('article-hero');
+  rightColumn.append(hero);
+  leftColumn.append(articleDate);
+
+  divContainer.append(leftColumn);
+  divContainer.append(rightColumn);
+
+  const mainContent = main.querySelector('body.article div.section > div.default-content-wrapper');
+  if (mainContent) {
+    mainContent.classList.add('article-body');
+    rightColumn.append(mainContent);
   }
+  main.insertBefore(columnContainer, main.firstChild);
 }
 
 async function fetchIndex(indexURL) {
@@ -73,6 +98,7 @@ async function buildRecentArticlesBlock(main) {
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
+// eslint-disable-next-line no-unused-vars
 function buildAutoBlocks(main) {
   try {
     // buildHeroBlock(main);
@@ -127,6 +153,9 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  if (document.body.classList.contains('article')) {
+    buildArticle(main);
+  }
 }
 
 /**

@@ -16,7 +16,7 @@ footer .footer p {
 footer .footer ul {
   list-style: none;
   margin: 0;
-  padding: 0; 
+  padding: 0;
 }
 
 footer .footer li {
@@ -149,6 +149,7 @@ footer .button:any-link:hover {
     opacity: 0;
     transform: scale(0.8);
   }
+
   100% {
     opacity: 1;
     transform: scale(1);

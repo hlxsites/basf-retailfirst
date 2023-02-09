@@ -1,3 +1,4 @@
+const hr = (doc) => doc.createElement('hr');
 const createMetadataBlock = (main, document) => {
   const meta = {};
 
@@ -36,6 +37,11 @@ const createMetadataBlock = (main, document) => {
 
   export default {
     transformDOM: ({ document }) => {
+
+
+      const heroImg = document.querySelector('div.avia-image-container[itemprop="image"]');
+      heroImg.insertAdjacentElement('afterend', hr(document));
+      console.log(heroImg);
       const main = document.querySelector('body');
 
       createMetadataBlock(main, document);
