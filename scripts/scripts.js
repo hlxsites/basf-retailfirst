@@ -149,7 +149,7 @@ export function addFavIcon(href) {
 async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadBlocks(main);
-  autoplayVideos(main);
+  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
@@ -158,7 +158,7 @@ async function loadLazy(doc) {
   await loadHeader(doc.querySelector('header'));
   await loadFooter(doc.querySelector('footer'));
 
-  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+  autoplayVideos(main);
   addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
