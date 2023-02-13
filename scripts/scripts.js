@@ -58,7 +58,6 @@ async function fetchIndex(indexURL) {
     const resp = await fetch(indexURL);
     const json = await resp.json();
     // eslint-disable-next-line no-console
-    console.log(`${indexURL}: ${json.data.length}`);
     return json.data;
   } catch (e) {
     // eslint-disable-next-line no-console
