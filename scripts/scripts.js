@@ -1,5 +1,6 @@
 import {
   sampleRUM,
+  buildBlock,
   loadHeader,
   loadFooter,
   decorateButtons,
@@ -10,6 +11,8 @@ import {
   waitForLCP,
   loadBlocks,
   loadCSS,
+  getMetadata,
+  loadBlock,
 } from './lib-franklin.js';
 
 const LCP_BLOCKS = ['columns']; // add your LCP blocks to the list
@@ -50,6 +53,45 @@ function buildArticle(main) {
   main.insertBefore(columnContainer, main.firstChild);
 }
 
+async function fetchIndex(indexURL) {
+  try {
+    const resp = await fetch(indexURL);
+    const json = await resp.json();
+    // eslint-disable-next-line no-console
+    return json.data;
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.log(`error while fetching ${indexURL}`, e);
+    return [];
+  }
+}
+
+async function buildRecentArticlesBlock(main) {
+  const ARTICLE_COUNT = 3;
+  const template = getMetadata('template');
+  if (template === 'article') {
+    const indexURL = '/query-index.json';
+    const index = await fetchIndex(indexURL);
+    const shortIndex = index.filter((e) => (e.template === 'article' && e.lastModified && e.image && e.title));
+    shortIndex.sort((e1, e2) => e1.lastModified - e2.lastModified);
+    const articles = [];
+    const count = Math.min(ARTICLE_COUNT, shortIndex.length);
+    for (let i = 0; i < count; i += 1) {
+      articles.push(`<article>
+        <a href=${shortIndex[i].path}>
+          <img src='${shortIndex[i].image}'/>
+          <p>${shortIndex[i].title}</p>
+        </a>
+      </article>`);
+    }
+    const block = buildBlock('recent-articles', [['<h1>Other features this month</h1>'], articles]);
+    block.classList.add('block');
+    block.setAttribute('data-block-name', 'recent-articles');
+    main.append(block);
+    loadBlock(block);
+  }
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -58,6 +100,7 @@ function buildArticle(main) {
 function buildAutoBlocks(main) {
   try {
     // buildHeroBlock(main);
+    buildRecentArticlesBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
