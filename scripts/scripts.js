@@ -121,6 +121,33 @@ function decorateVideos(el) {
   });
 }
 
+function hideModal(event) {
+  if (event.target.matches('.invite-modal')) {
+    const modal = document.querySelector('.invite-modal');
+    modal.style.display = 'none';
+    modal.removeEventListener('click', hideModal);
+  }
+}
+
+function showModal() {
+  const modal = document.querySelector('.invite-modal');
+  modal.style.display = 'block';
+  modal.addEventListener('click', (event) => {
+    hideModal(event);
+  });
+}
+
+function makeInviteModal() {
+  const modal = document.querySelector("[title='Share with a friend or colleague.']");
+  if (modal) {
+    modal.addEventListener('click', () => {
+      showModal();
+    });
+    // eslint-disable-next-line no-script-url
+    modal.href = 'javascript:void(0);';
+  }
+}
+
 function autoplayVideos(el) {
   document.body.click();
   const observer = new IntersectionObserver((entries) => {
@@ -200,6 +227,7 @@ async function loadLazy(doc) {
 
   await loadHeader(doc.querySelector('header'));
   await loadFooter(doc.querySelector('footer'));
+  makeInviteModal(main);
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
