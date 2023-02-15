@@ -130,7 +130,7 @@ function autoplayVideos(el) {
         return;
       }
       e.target.muted = true;
-      e.target.play();
+      e.target.play().catch((error) => console.error('unable to play videos', error));
     });
   });
   el.querySelectorAll('video[autoplay]').forEach((v) => {

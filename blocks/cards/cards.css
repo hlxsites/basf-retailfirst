@@ -39,7 +39,6 @@
 .cards .has-overlay > *:first-child {
     position: relative;
     margin-bottom: 10px;
-    aspect-ratio: 5 / 3;
 }
 
 .cards .has-overlay:hover > *:first-child::before,
@@ -74,7 +73,6 @@
 }
 
 .cards > ul > li img {
-    aspect-ratio: 5 / 3;
     vertical-align: bottom;
 }
 
@@ -103,7 +101,6 @@
     padding: 15px;
     background: #004a96;
     list-style: none;
-    aspect-ratio: 5 / 3;
 }
 
 .cards > ul ul li {
@@ -131,6 +128,10 @@
     .cards > ul ul {
         gap: 0;
         grid-template-columns: 1fr;
+    }
+
+    .cards .has-overlay > *:first-child, .cards > ul > li img, .cards > ul ul {
+        aspect-ratio: 5 / 3;
     }
 }
 

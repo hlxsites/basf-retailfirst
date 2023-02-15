@@ -221,7 +221,6 @@ main img {
 .home .columns img {
     max-width: 100%;
     width: 100%;
-    aspect-ratio: 5 / 3;
     object-fit: cover;
 }
 
@@ -299,6 +298,10 @@ body.article div.article-body li strong {
   main .section {
     padding: 50px 32px;
   }
+
+  .home .columns img {
+    aspect-ratio: 5 / 3;
+}
 }
 
 @media (min-width: 767px) {
