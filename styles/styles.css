@@ -26,6 +26,7 @@
 
   /* fonts */
   --body-font-family: 'HelveticaNeueLTPro-Lt','helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
+  --body-font-family-bold: 'HelveticaNeueLTPro-Bd','helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
   --home-header-family: 'HelveticaNeueLTStd-Blk';
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
@@ -230,7 +231,7 @@ main img {
 }
 
 .home .columns  p a {
-  font-family: 'HelveticaNeueLTStd-Bd';
+  font-family: var(--body-font-family-bold);
 }
 
 .home .columns > div {
