@@ -53,6 +53,7 @@ footer .footer > div > div {
   max-width: 1379px;
   margin: 0 auto;
   box-sizing: border-box;
+  text-align: center;
 }
 
 footer .footer > div > div:first-of-type {

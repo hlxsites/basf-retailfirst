@@ -26,6 +26,7 @@
 
   /* fonts */
   --body-font-family: 'HelveticaNeueLTPro-Lt','helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
+  --body-font-family-bold: 'HelveticaNeueLTPro-Bd','helvetica neue', helvetica, ubuntu, roboto, noto, sans-serif;
   --home-header-family: 'HelveticaNeueLTStd-Blk';
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
@@ -212,35 +213,33 @@ main img {
   height: auto;
 }
 
+.home .columns {
+  color: #434344;
+}
+
 .home .columns video,
 .home .columns img {
-    width: 412px;
+    max-width: 100%;
+    width: 100%;
     aspect-ratio: 5 / 3;
     object-fit: cover;
 }
 
 .home .columns  p {
-    margin: 0;
+  margin: 0.85rem 0;
+  line-height: 26.4px;
+}
+
+.home .columns  p a {
+  font-family: var(--body-font-family-bold);
 }
 
 .home .columns > div {
     font-size: 16px;
 }
 
-.home .columns > div > div {
-    flex: none;
-}
-
 body.article .columns > div {
     background-color: var(--background-color);
-}
-
-.home .columns > div > div:first-child {
-    width: 36.6%;
-}
-
-.home .columns > div > div:nth-child(2) {
-    width: 47%;
 }
 
 body.article div.section {
@@ -300,6 +299,18 @@ body.article div.article-body li strong {
   main .section {
     padding: 50px 32px;
   }
+}
+
+@media (min-width: 767px) {
+  .home .columns > div {
+    display: grid;
+    grid-template-columns: 36.6% 47%;
+    align-items: flex-start;
+  }
+
+  .home .columns > div > div:nth-child(2) {
+    margin-left: 15px;
+}
 }
 
 @media (min-width: 1024px) {
