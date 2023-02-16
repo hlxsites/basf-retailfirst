@@ -39,6 +39,7 @@ export default async function decorate(block) {
       + '    <div class="row">Name:</div><div class="row"><input id="name" type="text" name="name" required=""></div>\n'
       + '    <div class="row">Email:</div><div class="row"><input id="email" type="email" name="email" required=""></div>\n'
       + '    <div class="row"><input type="button" value="Invite" /></div>\n'
+      + '    <button title="Close (Esc)" type="button" class="close-invite">x</button>\n'
       + '  </div>';
   block.append(inviteModal);
 }

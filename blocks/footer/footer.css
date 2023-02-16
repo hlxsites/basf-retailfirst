@@ -136,6 +136,27 @@ footer .button:any-link:hover {
   display: none;
 }
 
+.invite-modal .close-invite {
+  color: #333;
+  cursor: pointer;
+  display: block;
+  z-index: 1046;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  opacity: 0.65;
+  position: absolute;
+  right: 0;
+  top: -18px;
+  text-align: center;
+  padding: 0;
+  box-shadow: none;
+  font-size: 28px;
+  font-style: normal;
+  background: transparent;
+  font-family: var(--fixed-font-family);
+}
+
 footer > div > div.invite-modal > div:first-of-type {
   position: absolute;
   margin: 20px auto;

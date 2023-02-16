@@ -121,6 +121,14 @@ function decorateVideos(el) {
   });
 }
 
+function handlePost(response, message) {
+  if (!response.ok) {
+    message.innerText = 'Invitation Failed. Try Again.';
+  } else {
+    message.innerText = 'Invitation Successful!';
+  }
+}
+
 function submitInvite(event) {
   // validate fields
   let valid = 0;
@@ -138,24 +146,24 @@ function submitInvite(event) {
     valid += 1;
   }
   if (valid === 0) {
-    fetch('https://main--basf-retailfirst--hlxsites.hlx.live/invite-form', {
+    fetch('/invite-form', {
       method: 'POST',
+      cache: 'no-cache',
       headers: {
-        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: {
+      body: JSON.stringify({
         data: {
-          name: 'Darin Kuntze',
-          email: 'dkuntze@adobe.com',
+          name,
+          email,
         },
-      },
-    }).then((response) => console.log(JSON.stringify(response)));
+      }),
+    }).then((response) => handlePost(response, messageDiv));
   }
 }
 
 function hideModal(event) {
-  if (event.target.matches('.invite-modal')) {
+  if (event.target.matches('.invite-modal') || event.target.matches('.close-invite')) {
     const modal = document.querySelector('.invite-modal');
     modal.style.display = 'none';
     modal.removeEventListener('click', hideModal);
@@ -169,6 +177,9 @@ function showModal() {
     hideModal(event);
   });
   modal.querySelector('.row > input[type=button]').addEventListener('click', submitInvite);
+  modal.querySelector('div > .close-invite').addEventListener('click', (event) => {
+    hideModal(event);
+  });
 }
 
 function makeInviteModal() {
