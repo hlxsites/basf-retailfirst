@@ -35,6 +35,7 @@ export default async function decorate(block) {
   const inviteModal = document.createElement('div');
   inviteModal.classList.add('invite-modal');
   inviteModal.innerHTML = '<div class="modal-content">\n'
+      + '    <div class="row message"></div>\n'
       + '    <div class="row">Name:</div><div class="row"><input id="name" type="text" name="name" required=""></div>\n'
       + '    <div class="row">Email:</div><div class="row"><input id="email" type="email" name="email" required=""></div>\n'
       + '    <div class="row"><input type="button" value="Invite" /></div>\n'

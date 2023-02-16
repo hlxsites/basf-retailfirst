@@ -121,6 +121,39 @@ function decorateVideos(el) {
   });
 }
 
+function submitInvite(event) {
+  // validate fields
+  let valid = 0;
+  const messageDiv = event.target.parentNode.parentNode.querySelector('.row.message');
+  const name = event.target.parentNode.parentNode.querySelector('.row > input[id=name]').value;
+  const email = event.target.parentNode.parentNode.querySelector('.row > input[id=email]').value;
+  const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  if (name === '') {
+    messageDiv.innerText = 'Name is required';
+    valid += 1;
+  }
+  if (!email.match(validRegex)) {
+    messageDiv.innerText = 'Valid email is required';
+    valid += 1;
+  }
+  if (valid === 0) {
+    fetch('https://main--basf-retailfirst--hlxsites.hlx.live/invite-form', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: {
+        data: {
+          name: 'Darin Kuntze',
+          email: 'dkuntze@adobe.com',
+        },
+      },
+    }).then((response) => console.log(JSON.stringify(response)));
+  }
+}
+
 function hideModal(event) {
   if (event.target.matches('.invite-modal')) {
     const modal = document.querySelector('.invite-modal');
@@ -135,6 +168,7 @@ function showModal() {
   modal.addEventListener('click', (event) => {
     hideModal(event);
   });
+  modal.querySelector('.row > input[type=button]').addEventListener('click', submitInvite);
 }
 
 function makeInviteModal() {
