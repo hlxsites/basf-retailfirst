@@ -175,7 +175,7 @@ footer > div > div.invite-modal > div:first-of-type {
   top: 50%;
   transform: translate(-50%, -50%);
   flex-direction: column;
-  width: 500px;
+  width: 100%;
 }
 
 footer > div > div.invite-modal > div > div.row {
