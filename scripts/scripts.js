@@ -121,6 +121,91 @@ function decorateVideos(el) {
   });
 }
 
+function handlePost(response, message) {
+  if (!response.ok) {
+    if (!message.classList.contains('invite-error')) {
+      message.classList.add('invite-error');
+    }
+    message.innerText = 'Invitation Failed. Try Again.';
+  } else {
+    if (!message.classList.contains('invite-success')) {
+      message.classList.add('invite-success');
+      message.classList.remove('invite-error');
+    }
+    message.innerText = 'Invitation Successful!';
+  }
+}
+
+function submitInvite(event) {
+  // validate fields
+  let valid = 0;
+  const messageDiv = event.target.parentNode.parentNode.querySelector('.row.message');
+  const name = event.target.parentNode.parentNode.querySelector('.row > input[id=name]').value;
+  const email = event.target.parentNode.parentNode.querySelector('.row > input[id=email]').value;
+  // email regex
+  const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  if (name === '') {
+    if (!messageDiv.classList.contains('invite-error')) {
+      messageDiv.classList.add('invite-error');
+    }
+    messageDiv.innerText = 'Name is required';
+    valid += 1;
+  }
+  if (!email.match(validRegex)) {
+    if (!messageDiv.classList.contains('invite-error')) {
+      messageDiv.classList.add('invite-error');
+    }
+    messageDiv.innerText = 'Valid email is required';
+    valid += 1;
+  }
+  if (valid === 0) {
+    fetch('/invite-form', {
+      method: 'POST',
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          name,
+          email,
+        },
+      }),
+    }).then((response) => handlePost(response, messageDiv));
+  }
+}
+
+function hideModal(event) {
+  if (event.target.matches('.invite-modal') || event.target.matches('.close-invite')) {
+    const modal = document.querySelector('.invite-modal');
+    modal.style.display = 'none';
+    modal.removeEventListener('click', hideModal);
+  }
+}
+
+function showModal() {
+  const modal = document.querySelector('.invite-modal');
+  modal.style.display = 'block';
+  modal.addEventListener('click', (event) => {
+    hideModal(event);
+  });
+  modal.querySelector('.row > input[type=button]').addEventListener('click', submitInvite);
+  modal.querySelector('div > .close-invite').addEventListener('click', (event) => {
+    hideModal(event);
+  });
+}
+
+function makeInviteModal() {
+  const modal = document.querySelector('a[href="bookmark://invite"]');
+  if (modal) {
+    modal.addEventListener('click', (event) => {
+      showModal();
+      event.preventDefault();
+    });
+  }
+}
+
 function autoplayVideos(el) {
   document.body.click();
   const observer = new IntersectionObserver((entries) => {
@@ -200,6 +285,7 @@ async function loadLazy(doc) {
 
   await loadHeader(doc.querySelector('header'));
   await loadFooter(doc.querySelector('footer'));
+  makeInviteModal(main);
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
