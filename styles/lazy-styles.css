@@ -4,7 +4,7 @@
     src: local('☺'), url('fonts/HelveticaNeueLTStd-Bd.woff') format('woff'), url('fonts/HelveticaNeueLTStd-Bd.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
 }
 @font-face {
     font-family: HelveticaNeueLTStd-Blk;
@@ -12,7 +12,7 @@
     src: local('☺'), url('fonts/HelveticaNeueLTStd-Blk.woff') format('woff'), url('fonts/HelveticaNeueLTStd-Blk.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
 }
 @font-face {
     font-family: HelveticaNeue-Roman;
@@ -20,7 +20,7 @@
     src: local('☺'), url('fonts/HelveticaNeue-Roman.woff') format('woff'), url('fonts/HelveticaNeue-Roman.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
 }
 @font-face {
     font-family: HelveticaNeueLTPro-Lt;
@@ -28,5 +28,5 @@
     src: local('☺'), url('fonts/HelveticaNeueLTPro-Lt.woff') format('woff'), url('fonts/HelveticaNeueLTPro-Lt.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: fallback;
+    font-display: swap;
 }
