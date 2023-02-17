@@ -136,6 +136,14 @@ footer .button:any-link:hover {
   display: none;
 }
 
+.invite-error {
+  color: red;
+}
+
+.invite-success {
+  color: green;
+}
+
 .invite-modal .close-invite {
   color: #333;
   cursor: pointer;

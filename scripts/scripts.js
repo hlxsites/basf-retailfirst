@@ -123,8 +123,15 @@ function decorateVideos(el) {
 
 function handlePost(response, message) {
   if (!response.ok) {
+    if (!message.classList.contains('invite-error')) {
+      message.classList.add('invite-error');
+    }
     message.innerText = 'Invitation Failed. Try Again.';
   } else {
+    if (!message.classList.contains('invite-success')) {
+      message.classList.add('invite-success');
+      message.classList.remove('invite-error');
+    }
     message.innerText = 'Invitation Successful!';
   }
 }
@@ -135,13 +142,20 @@ function submitInvite(event) {
   const messageDiv = event.target.parentNode.parentNode.querySelector('.row.message');
   const name = event.target.parentNode.parentNode.querySelector('.row > input[id=name]').value;
   const email = event.target.parentNode.parentNode.querySelector('.row > input[id=email]').value;
+  // email regex
   const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
   if (name === '') {
+    if (!messageDiv.classList.contains('invite-error')) {
+      messageDiv.classList.add('invite-error');
+    }
     messageDiv.innerText = 'Name is required';
     valid += 1;
   }
   if (!email.match(validRegex)) {
+    if (!messageDiv.classList.contains('invite-error')) {
+      messageDiv.classList.add('invite-error');
+    }
     messageDiv.innerText = 'Valid email is required';
     valid += 1;
   }
@@ -183,13 +197,12 @@ function showModal() {
 }
 
 function makeInviteModal() {
-  const modal = document.querySelector("[title='Share with a friend or colleague.']");
+  const modal = document.querySelector('a[href="bookmark://invite"]');
   if (modal) {
-    modal.addEventListener('click', () => {
+    modal.addEventListener('click', (event) => {
       showModal();
+      event.preventDefault();
     });
-    // eslint-disable-next-line no-script-url
-    modal.href = 'javascript:void(0);';
   }
 }
 
