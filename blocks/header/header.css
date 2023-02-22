@@ -2,7 +2,7 @@ header nav {
   position: relative;
   border-bottom: solid 15px;
   max-width: 1279px;
-  height: 299px;
+  height: calc(calc(var(--nav-height) - 15px));
   color: #21a0d2;
   font-weight: 700;
   font-size: 20px;
@@ -42,7 +42,7 @@ header nav div:first-child {
 }
 
 header nav > div:nth-child(2) {
-  height: 170px;
+  height: var(--nav-height);
 }
 
 header nav > div:nth-child(2) p {
@@ -72,12 +72,8 @@ header nav picture {
 }
 
 @media screen  and (max-width: 767px) {
-  header {
-    height: 170px;
-  }
-
-  header nav {
-    height: 170px;
+  header, header nav {
+    height: var(--nav-height);
   }
 
   header nav img {
