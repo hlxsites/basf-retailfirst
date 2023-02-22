@@ -46,7 +46,7 @@
   --heading-font-size-xs: 18px;
 
   /* nav height */
-  --nav-height: 314px;
+  --nav-height: 170px;
 
 }
 
@@ -316,6 +316,12 @@ body.article div.article-body li strong {
   .home .columns > div > div:nth-child(2) {
     margin-left: 15px;
 }
+}
+
+@media screen  and (min-width: 768px) {
+    :root {
+        --nav-height: 314px;
+    }
 }
 
 @media (min-width: 1024px) {
