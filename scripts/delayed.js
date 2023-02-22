@@ -6,7 +6,7 @@ sampleRUM('cwv');
 
 // add more delayed functionality here
 function loadUTag() {
-  const jquery = document.createElement('script')
+  const jquery = document.createElement('script');
   jquery.src = 'https://code.jquery.com/jquery-3.6.3.min.js';
   jquery.async = true;
   document.head.appendChild(jquery);
