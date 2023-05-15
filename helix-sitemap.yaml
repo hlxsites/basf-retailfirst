@@ -1,0 +1,5 @@
+sitemaps:
+  retailfirst:
+    origin: https://basfretailfirst.com
+    source: /query-index.json
+    destination: /sitemap.xml
