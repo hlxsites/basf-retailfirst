@@ -79,7 +79,7 @@ async function buildRecentArticlesBlock(main) {
     for (let i = 0; i < count; i += 1) {
       articles.push(`<article>
         <a href=${shortIndex[i].path}>
-          <img src='${shortIndex[i].image}'/>
+          <img src='${shortIndex[i].image}' alt='related article image' />
           <p>${shortIndex[i].title}</p>
         </a>
       </article>`);
