@@ -7,6 +7,7 @@
     font-size: 24px;
     letter-spacing: 1px;
     color: #434344;
+    font-family: var(--body-font-family-bold);
 }
 
 .recent-articles > div > div {
@@ -33,8 +34,8 @@
 }
 
 .recent-articles article img {
-    max-width: 600px;
-    width: 100%;
+    max-width: 100%;
+    width: auto;
     height: auto;
 }
 
@@ -86,6 +87,13 @@
 
     .recent-articles > div:nth-child(2) {
        margin-top: 30px;
+    }
+
+    .recent-articles article img {
+        max-width: 100%;
+        width: auto;
+        height: 150px;
+        object-fit: cover;
     }
 }
 @media  screen and (max-width: 767px) {
